@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
+import { auth } from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,9 +40,20 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
 
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const logIn = (event: any, email: string, pass: string) => {
+    event.preventDefault();
 
+    auth
+      .signInWithEmailAndPassword(email, pass)
+      .then((user) => {
+        console.log(user);
+        return user;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
@@ -61,7 +73,6 @@ export default function Login() {
             label="Email Address"
             name="email"
             autoComplete="email"
-            ref={emailRef}
             autoFocus
           />
           <TextField
@@ -73,7 +84,6 @@ export default function Login() {
             label="Password"
             type="password"
             id="password"
-            ref={passwordRef}
             autoComplete="current-password"
           />
           <FormControlLabel
@@ -88,6 +98,9 @@ export default function Login() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={(event) => {
+                logIn(event, 'abdu123@mail.ru', 'abu123456');
+              }}
             >
               Sign In
             </Button>
