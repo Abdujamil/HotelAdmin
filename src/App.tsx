@@ -7,7 +7,7 @@ import Register from './Components/Register';
 function App() {
   return (
     <HashRouter>
-      <div>
+      <div className="App">
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/register" component={Register} />

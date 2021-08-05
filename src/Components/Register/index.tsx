@@ -5,12 +5,12 @@ import {
   Button,
   TextField,
   Grid,
-  Box,
   Typography,
   Container,
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
+import { auth } from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +38,21 @@ const useStyles = makeStyles((theme) => ({
 export default function Register() {
   const classes = useStyles();
 
+  const register = (event: any, email: string, pass: string) => {
+    event.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(email, pass)
+      .then((user) => {
+        console.log(user);
+        return user;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
@@ -48,29 +63,6 @@ export default function Register() {
           Sign Up
         </Typography>
         <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="Name"
-            label="Name"
-            name="Name"
-            autoComplete="Name"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="Surame"
-            label="Surame"
-            name="Surame"
-            autoComplete="Surame"
-            autoFocus
-          />
-
           <TextField
             variant="outlined"
             margin="normal"
@@ -94,17 +86,18 @@ export default function Register() {
             autoComplete="current-password"
           />
 
-          <Link to="/home">
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign Up
-            </Button>
-          </Link>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={(event) => {
+              register(event, '123@mail.ru', 'qqqqqqqqqqqqqqqq');
+            }}
+          >
+            Sign Up
+          </Button>
 
           <Grid container>
             <Grid item xs>

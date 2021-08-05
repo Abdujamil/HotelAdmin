@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Avatar,
@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
   const classes = useStyles();
 
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
@@ -58,6 +61,7 @@ export default function Login() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            ref={emailRef}
             autoFocus
           />
           <TextField
@@ -69,6 +73,7 @@ export default function Login() {
             label="Password"
             type="password"
             id="password"
+            ref={passwordRef}
             autoComplete="current-password"
           />
           <FormControlLabel
@@ -93,7 +98,7 @@ export default function Login() {
               <Link to="/register">Forgot password?</Link>
             </Grid>
             <Grid item>
-              <Link to="../register">Don't have an account? Sign Up</Link>
+              <Link to="/register">Dont have an account? Sign Up</Link>
             </Grid>
           </Grid>
         </form>
