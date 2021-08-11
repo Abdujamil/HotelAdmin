@@ -4,9 +4,9 @@ import {
   Avatar,
   Button,
   TextField,
-  Grid,
   Typography,
   Container,
+  Grid,
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function ForgotPassword() {
   const classes = useStyles();
 
-  const logIn = (event: any, email: string, pass: string) => {
+  const reset = (event: any, email: string) => {
     event.preventDefault();
 
     /*auth
-      .signInWithEmailAndPassword(email, pass)
+      .sendPasswordResetEmail(email)
       .then((user) => {
         console.log(user);
         return user;
@@ -59,7 +59,7 @@ export default function Login() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Reset password
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -73,39 +73,26 @@ export default function Login() {
             autoComplete="email"
             autoFocus
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
 
-          <Link to="/home">
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={(event) => {
-                logIn(event, 'abdu123@mail.ru', 'abu123456');
-              }}
-            >
-              Sign In
-            </Button>
-          </Link>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={(event) => {
+              reset(event, 'dusmatov9999@gmail.com');
+            }}
+          >
+            Send
+          </Button>
 
           <Grid container>
             <Grid item xs>
-              <Link to="/forgotPassword">Forgot password?</Link>
+              <Link to="/">Sign in</Link>
             </Grid>
             <Grid item>
-              <Link to="/register">Dont have an account? Sign Up</Link>
+              <Link to="/register">Sign up</Link>
             </Grid>
           </Grid>
         </form>

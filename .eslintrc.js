@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   extends: 'erb',
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
@@ -23,4 +23,4 @@ module.exports = {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
   },
-};
+};*/
