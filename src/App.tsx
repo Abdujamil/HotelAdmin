@@ -5,10 +5,10 @@ import {HashRouter, Switch, Route} from 'react-router-dom';
 import ErrorModal from './components/ErrorModal';
 import Loader from './components/Loader';
 import AlertSuccess from './components/AlertSuccess';
-import Login from './Components/Login';
-import Home from './Components/Home';
-import Register from './Components/Register';
-import ForgotPassword from './Components/ForgotPassword';
+import Login from './components/Login';
+import Home from './components/Home';
+import Register from './components/Register';
+import ForgotPassword from './components/ForgotPassword';
 
 function App() {
   return (

@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Avatar,
   Button,
   TextField,
+  Grid,
   Typography,
   Container,
-  Grid,
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { forgotPassword } from '../../actions/user';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,22 +38,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ForgotPassword() {
+const ForgotPassword = (props: any) => {
   const classes = useStyles();
 
-  const reset = (event: any, email: string) => {
-    event.preventDefault();
+  const history = useHistory();
 
-    /*auth
-      .sendPasswordResetEmail(email)
-      .then((user) => {
-        console.log(user);
-        return user;
-      })
-      .catch((err) => {
-        console.log(err);
-        return err;
-      });*/
+  const { forgotPasswordAction } = props;
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .matches(
+        /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm,
+        'Please provide valid email'
+      )
+      .max(320, 'Maximum 320 symbols')
+      .required('Email is required'),
+  });
+
+  const initialValues = {
+    email: '',
   };
 
   return (
@@ -59,44 +66,63 @@ export default function ForgotPassword() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Reset password
+          Reset Password
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={(event) => {
-              reset(event, 'dusmatov9999@gmail.com');
-            }}
-          >
-            Send
-          </Button>
-
-          <Grid container>
-            <Grid item xs>
-              <Link to="/">Sign in</Link>
-            </Grid>
-            <Grid item>
-              <Link to="/register">Sign up</Link>
-            </Grid>
+        <Formik
+          initialValues={initialValues}
+          enableReinitialize
+          validationSchema={validationSchema}
+          onSubmit={(values, actions) => {
+            Promise.resolve(forgotPasswordAction(values.email)).then(() => {
+              history.push('/');
+            });
+          }}
+        >
+          {(props) => (
+            <form onSubmit={props.handleSubmit} className={classes.form}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoFocus
+                value={props.values.email}
+                onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                error={props.touched.email && Boolean(props.errors.email)}
+                helperText={props.touched.email && props.errors.email}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Send link
+              </Button>
+            </form>
+          )}
+        </Formik>
+        <Grid container>
+          <Grid item xs>
+            <Link to="/">Sign in</Link>
           </Grid>
-        </form>
+          <Grid item>
+            <Link to="/register">Register</Link>
+          </Grid>
+        </Grid>
       </div>
     </Container>
   );
-}
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    forgotPasswordAction: (email: string) => dispatch(forgotPassword(email)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ForgotPassword);

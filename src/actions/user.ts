@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 export function registerUser(email: string, password: string) {
   return async function (dispatch: any) {
-    dispatch({type: types.SHOW_LOADER});
+    dispatch({ type: types.SHOW_LOADER });
 
     const firebaseApp = firebase.initializeApp(firebaseConfig);
     //const db = firebaseApp.firestore();
@@ -34,12 +34,59 @@ export function registerUser(email: string, password: string) {
         });
       })
       .catch((error) => {
-        dispatch({type: types.SHOW_ERROR, payload: error.message});
-      }).finally(() => {
-      dispatch({type: types.HIDE_LOADER});
-    });
-
+        dispatch({ type: types.SHOW_ERROR, payload: error.message });
+      })
+      .finally(() => {
+        dispatch({ type: types.HIDE_LOADER });
+      });
   };
 }
 
+export function authorizeUser(email: string, password: string) {
+  return async function (dispatch: any) {
+    dispatch({ type: types.SHOW_LOADER });
 
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    //const db = firebaseApp.firestore();
+    const auth = firebaseApp.auth();
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        dispatch({
+          type: userTypes.SET_USER,
+          payload: user,
+        });
+      })
+      .catch((error) => {
+        dispatch({ type: types.SHOW_ERROR, payload: error.message });
+      })
+      .finally(() => {
+        dispatch({ type: types.HIDE_LOADER });
+      });
+  };
+}
+
+export function forgotPassword(email: string) {
+  return async function (dispatch: any) {
+    dispatch({ type: types.SHOW_LOADER });
+
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    //const db = firebaseApp.firestore();
+    const auth = firebaseApp.auth();
+
+    auth.sendPasswordResetEmail(email)
+      .then(() => {
+        dispatch({
+          type: types.SHOW_ALERT,
+          payload: 'Please check your email. We sent reset link',
+        });
+      })
+      .catch((error) => {
+        dispatch({ type: types.SHOW_ERROR, payload: error.message });
+      })
+      .finally(() => {
+        dispatch({ type: types.HIDE_LOADER });
+      });
+  };
+}
