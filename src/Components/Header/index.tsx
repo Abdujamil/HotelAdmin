@@ -1,27 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  createStyles,
-  makeStyles,
-  Theme,
-  Grid,
-} from '@material-ui/core';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  })
-);
+import { AppBar, Toolbar, Grid } from '@material-ui/core';
+import useStyles from '../styles';
 
 const Header = () => {
   const classes = useStyles();

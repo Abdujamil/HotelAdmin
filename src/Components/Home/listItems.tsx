@@ -11,10 +11,17 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import FaceIcon from '@material-ui/icons/Face';
 import ReportIcon from '@material-ui/icons/Report';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import Link from "@material-ui/core/Link"
 
 export const mainListItems = (
   <div>
+    <ListItem button>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
+    </ListItem>
     <ListItem button>
       <ListItemIcon>
         <PeopleOutlineIcon />

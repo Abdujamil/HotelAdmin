@@ -14,30 +14,7 @@ import {
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { authorizeUser } from '../../actions/user';
 import { getUser } from '../../selectors';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  white: {
-    color: '#fff',
-  },
-}));
+import useStyles from '../styles';
 
 const Login = (props: any) => {
   const classes = useStyles();
@@ -60,8 +37,8 @@ const Login = (props: any) => {
   });
 
   const initialValues = {
-    email: '',
-    password: '',
+    email: 'abdujamil@gmail.com',
+    password: '11111111',
   };
 
   return (
