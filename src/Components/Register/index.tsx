@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {
   Avatar,
   Button,
@@ -41,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
 const Register = (props: any) => {
   const classes = useStyles();
 
+  const history = useHistory();
+
   const {registerUserAction} = props;
 
   const validationSchema = Yup.object({
@@ -68,7 +70,7 @@ const Register = (props: any) => {
           validationSchema={validationSchema}
           onSubmit={(values, actions) => {
             Promise.resolve(registerUserAction(values.email, values.password)).then(() => {
-              actions.resetForm();
+              history.push('/');
             });
           }}
         >

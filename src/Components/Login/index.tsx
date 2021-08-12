@@ -46,8 +46,6 @@ const Login = (props: any) => {
 
   const { user, authorizeUserAction } = props;
 
-  console.log('user', user);
-
   const validationSchema = Yup.object({
     email: Yup.string()
       .matches(
@@ -73,7 +71,7 @@ const Login = (props: any) => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign In
+          Login
         </Typography>
         <Formik
           initialValues={initialValues}
