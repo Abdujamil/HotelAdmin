@@ -1,87 +1,74 @@
 import React from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PeopleIcon from '@material-ui/icons/People';
-import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import MeetingRoomOutlinedIcon from '@material-ui/icons/MeetingRoomOutlined';
-import RoomServiceIcon from '@material-ui/icons/RoomService';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import FaceIcon from '@material-ui/icons/Face';
-import ReportIcon from '@material-ui/icons/Report';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import Link from "@material-ui/core/Link"
+import {Link} from 'react-router-dom';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from '@material-ui/core';
+import {
+  People,
+  PeopleOutline,
+  PeopleAlt,
+  MeetingRoomOutlined,
+  RoomService,
+  VpnKey,
+  Face,
+  Dashboard
+} from '@material-ui/icons';
 
 export const mainListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <DashboardIcon />
+        <Dashboard/>
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="Dashboard"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleOutlineIcon />
+        <PeopleOutline/>
       </ListItemIcon>
-      <Link href="./Users">
-      <ListItemText primary="Users" />
+      <Link to="./Users">
+        <ListItemText primary="Users"/>
       </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleAltIcon />
+        <PeopleAlt/>
       </ListItemIcon>
-      <ListItemText primary="Clients" />
+      <ListItemText primary="Clients"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <People/>
       </ListItemIcon>
-      <ListItemText primary="Guests" />
+      <ListItemText primary="Guests"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <FaceIcon />
+        <Face/>
       </ListItemIcon>
-      <ListItemText primary="Staff" />
+      <ListItemText primary="Staff"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <MeetingRoomOutlinedIcon />
+        <MeetingRoomOutlined/>
       </ListItemIcon>
-      <ListItemText primary="Room Category" />
+      <ListItemText primary="Room Category"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <RoomServiceIcon />
+        <RoomService/>
       </ListItemIcon>
-      <ListItemText primary="Survices" />
+      <ListItemText primary="Survices"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <VpnKeyIcon />
+        <VpnKey/>
       </ListItemIcon>
-      <ListItemText primary="Numbers" />
-    </ListItem>
-  </div>
-);
-
-export const secondaryListItems = (
-  <div>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Diagramm" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ReportIcon />
-      </ListItemIcon>
-      <ListItemText primary="Report" />
+      <Link to="./rooms">
+        <ListItemText primary="Rooms"/>
+      </Link>
     </ListItem>
   </div>
 );

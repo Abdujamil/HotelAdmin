@@ -119,7 +119,7 @@ const Login = (props: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    user: (state: any) => getUser(state),
+    user: getUser(state),
   };
 };
 

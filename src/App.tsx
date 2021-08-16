@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
+import Rooms from './Components/Home/rooms';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/home" component={Home} />
             <Route path="/forgotPassword" component={ForgotPassword} />
+            <Route path="/rooms" component={Rooms} />
           </Switch>
         </div>
       </HashRouter>

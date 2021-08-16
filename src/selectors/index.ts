@@ -10,3 +10,6 @@ export const getUser = (state: any) => {
     return state.user;
 };
 export const getUserId = (state: any) => state.user?.data?.id || null;
+
+export const getRooms = (state: any) => state.rooms;
+export const isRoomsFetched = (state: any) => Object.keys(state.rooms).length !== 0;
