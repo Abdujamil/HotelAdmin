@@ -68,5 +68,13 @@ export const mainListItems = (
         <ListItemText primary="Rooms" />
       </ListItem>
     </Link>
+    <Link to="./accommodation">
+      <ListItem button>
+        <ListItemIcon>
+          <VpnKey />
+        </ListItemIcon>
+        <ListItemText primary="Accommodation" />
+      </ListItem>
+    </Link>
   </div>
 );

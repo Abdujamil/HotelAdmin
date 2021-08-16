@@ -11,6 +11,8 @@ import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import Rooms from './Components/Home/rooms';
 import staff from './Components/Home/staff';
+import Accommodation from './Components/Home/accommodation';
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/rooms" component={Rooms} />
             <Route path="/staff" component={staff} />
+            <Route path="/accommodation" component={Accommodation} />
           </Switch>
         </div>
       </HashRouter>

@@ -16,3 +16,6 @@ export const isRoomsFetched = (state: any) => Object.keys(state.rooms).length !=
 
 export const getStaff = (state: any) => state.staff;
 export const isStaffFetched = (state: any) => Object.keys(state.staff).length !== 0;
+
+export const getAccommodation = (state: any) => state.accommodation;
+export const isAccommodationFetched = (state: any) => Object.keys(state.accommodation).length !== 0;
