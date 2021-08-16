@@ -13,3 +13,6 @@ export const getUserId = (state: any) => state.user?.data?.id || null;
 
 export const getRooms = (state: any) => state.rooms;
 export const isRoomsFetched = (state: any) => Object.keys(state.rooms).length !== 0;
+
+export const getStaff = (state: any) => state.staff;
+export const isStaffFetched = (state: any) => Object.keys(state.staff).length !== 0;

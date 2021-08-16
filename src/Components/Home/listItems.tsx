@@ -1,10 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {
-  ListItem,
-  ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import {
   People,
   PeopleOutline,
@@ -13,62 +9,64 @@ import {
   RoomService,
   VpnKey,
   Face,
-  Dashboard
+  Dashboard,
 } from '@material-ui/icons';
 
 export const mainListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <Dashboard/>
+        <Dashboard />
       </ListItemIcon>
-      <ListItemText primary="Dashboard"/>
+      <ListItemText primary="Dashboard" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleOutline/>
+        <PeopleOutline />
       </ListItemIcon>
       <Link to="./Users">
-        <ListItemText primary="Users"/>
+        <ListItemText primary="Users" />
       </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleAlt/>
+        <PeopleAlt />
       </ListItemIcon>
-      <ListItemText primary="Clients"/>
+      <ListItemText primary="Clients" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <People/>
+        <People />
       </ListItemIcon>
-      <ListItemText primary="Guests"/>
+      <ListItemText primary="Guests" />
+    </ListItem>
+    <Link to="./staff">
+      <ListItem button>
+        <ListItemIcon>
+          <Face />
+        </ListItemIcon>
+        <ListItemText primary="Staff" />
+      </ListItem>
+    </Link>
+    <ListItem button>
+      <ListItemIcon>
+        <MeetingRoomOutlined />
+      </ListItemIcon>
+      <ListItemText primary="Room Category" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <Face/>
+        <RoomService />
       </ListItemIcon>
-      <ListItemText primary="Staff"/>
+      <ListItemText primary="Survices" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <MeetingRoomOutlined/>
-      </ListItemIcon>
-      <ListItemText primary="Room Category"/>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <RoomService/>
-      </ListItemIcon>
-      <ListItemText primary="Survices"/>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <VpnKey/>
-      </ListItemIcon>
-      <Link to="./rooms">
-        <ListItemText primary="Rooms"/>
-      </Link>
-    </ListItem>
+    <Link to="./rooms">
+      <ListItem button>
+        <ListItemIcon>
+          <VpnKey />
+        </ListItemIcon>
+        <ListItemText primary="Rooms" />
+      </ListItem>
+    </Link>
   </div>
 );
