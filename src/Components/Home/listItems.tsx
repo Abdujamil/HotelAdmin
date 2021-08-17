@@ -35,7 +35,7 @@ export const mainListItems = (
         <ListItemText primary="Staff" />
       </ListItem>
     </Link>
-    <Link to="./room-categories">
+    <Link to="./categoryRooms">
       <ListItem button>
         <ListItemIcon>
           <MeetingRoomOutlined />

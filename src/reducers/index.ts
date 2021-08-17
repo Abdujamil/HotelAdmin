@@ -4,6 +4,7 @@ import userReducer from './user';
 import roomsReducer from './rooms';
 import staffReducer from './staff';
 import accommodationReducer from './accomodation';
+import categoryRoomsReducer from './categoryRooms';
 
 export const rootReducer = combineReducers({
   app: appReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   rooms: roomsReducer,
   staff: staffReducer,
   accommodation: accommodationReducer
+  categoryRooms: categoryRoomsReducer,
 });

@@ -12,10 +12,13 @@ export const getUser = (state: any) => {
 export const getUserId = (state: any) => state.user?.data?.id || null;
 
 export const getRooms = (state: any) => state.rooms;
-export const isRoomsFetched = (state: any) => Object.keys(state.rooms).length !== 0;
+export const isRoomsFetched = (state: any) => state.rooms.length !== 0;
 
 export const getStaff = (state: any) => state.staff;
-export const isStaffFetched = (state: any) => Object.keys(state.staff).length !== 0;
+export const isStaffFetched = (state: any) => state.staff.length !== 0;
 
 export const getAccommodation = (state: any) => state.accommodation;
-export const isAccommodationFetched = (state: any) => Object.keys(state.accommodation).length !== 0;
+export const isAccommodationFetched = (state: any) => state.accommodation.length !== 0;
+
+export const getCategoryRooms = (state: any) => state.categoryRooms;
+export const isCategoryRoomsFetched = (state: any) => state.categoryRooms.length !== 0;
