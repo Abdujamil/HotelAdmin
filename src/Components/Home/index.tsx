@@ -1,17 +1,12 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import clsx from 'clsx';
-import {
-  CssBaseline,
-  Container,
-  Grid,
-  Paper
-} from '@material-ui/core';
+import { CssBaseline, Container, Grid, Paper } from '@material-ui/core';
 import MenuBar from './menuBar';
 import Chart from './chart';
 import Orders from './orders';
-import {getRooms} from '../../selectors';
-import {fetchRooms} from '../../actions/rooms';
+import { getRooms } from '../../selectors';
+import { fetchRooms } from '../../actions/rooms';
 import { fetchStaff } from '../../actions/staff';
 import { fetchAccommodation } from '../../actions/accommodation';
 import useStyles from '../styles';
@@ -19,7 +14,11 @@ import useStyles from '../styles';
 const Home = (props: any) => {
   const classes = useStyles();
 
-  const {rooms, fetchRoomsAction, fetchStaffAction, fetchAccommodationAction} = props;
+  const {
+    fetchRoomsAction,
+    fetchStaffAction,
+    fetchAccommodationAction,
+  } = props;
 
   useEffect(() => {
     fetchRoomsAction();
@@ -31,24 +30,24 @@ const Home = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline/>
-      <MenuBar/>
+      <CssBaseline />
+      <MenuBar />
       <main className={classes.content}>
-        <div className={classes.appBarSpacer}/>
+        <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart/>
+                <Chart />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            
+
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders/>
+                <Orders />
               </Paper>
             </Grid>
           </Grid>
@@ -56,7 +55,7 @@ const Home = (props: any) => {
       </main>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state: any) => {
   return {

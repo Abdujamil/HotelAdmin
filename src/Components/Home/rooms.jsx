@@ -39,7 +39,7 @@ const Rooms = (props) => {
   const columns = [
     {title: 'Number', field: 'number', type: 'numeric'},
     {title: 'Rooms', field: 'rooms', type: 'numeric'},
-    {title: 'Cost per day', field: 'cost_per_day', type: 'numeric'},
+    {title: 'Cost per day', field: 'cost_per_day', type: 'currency'},
   ];
 
   const options = {
