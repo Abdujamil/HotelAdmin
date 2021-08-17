@@ -9,19 +9,22 @@ import {
 } from '@material-ui/core';
 import MenuBar from './menuBar';
 import Chart from './chart';
-import Deposits from './deposit';
 import Orders from './orders';
 import {getRooms} from '../../selectors';
 import {fetchRooms} from '../../actions/rooms';
+import { fetchStaff } from '../../actions/staff';
+import { fetchAccommodation } from '../../actions/accommodation';
 import useStyles from '../styles';
 
 const Home = (props: any) => {
   const classes = useStyles();
 
-  const {rooms, fetchRoomsAction} = props;
+  const {rooms, fetchRoomsAction, fetchStaffAction, fetchAccommodationAction} = props;
 
   useEffect(() => {
-    //fetchRoomsAction();
+    fetchRoomsAction();
+    fetchStaffAction();
+    fetchAccommodationAction();
   }, []);
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -41,11 +44,7 @@ const Home = (props: any) => {
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits/>
-              </Paper>
-            </Grid>
+            
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
@@ -59,7 +58,7 @@ const Home = (props: any) => {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     rooms: getRooms(state),
   };
@@ -68,6 +67,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     fetchRoomsAction: () => dispatch(fetchRooms()),
+    fetchStaffAction: () => dispatch(fetchStaff()),
+    fetchAccommodationAction: () => dispatch(fetchAccommodation()),
   };
 };
 

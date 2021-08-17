@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import MaterialTable from 'material-table';
 import { Container, CssBaseline, Grid, Paper } from '@material-ui/core';
 import MenuBar from './menuBar';
-import { getAccommodation, isAccommodationFetched } from '../../selectors';
+import {
+  getAccommodation,
+  isAccommodationFetched,
+  getStaff,
+  getRooms 
+} from '../../selectors';
 import {
   fetchAccommodation,
   addAccommodation,
@@ -22,19 +27,17 @@ const Accommodation = (props) => {
     addAccommodationAction,
     deleteAccommodationAction,
     updateAccommodationAction,
+    staff,
+    rooms
   } = props;
 
-  useEffect(() => {
-    fetchAccommodationAction();
-  }, []);
-
-   const validateFields = (data) => {
+  const validateFields = (data) => {
     if (Object.keys(data).length === 0) {
       alert('Please add info');
       return false;
     }
 
-   /*  if (typeof data.room_id === 'undefined' || data.room_id === '') {
+    /*  if (typeof data.room_id === 'undefined' || data.room_id === '') {
       alert('Please add room_id');
       return false;
     }
@@ -65,15 +68,26 @@ const Accommodation = (props) => {
     } */
 
     return true;
-  }; 
+  };
+
+  let staffObject = staff.reduce(function (acc, cur, i) {
+    acc[cur.id] = cur.name;
+
+    return acc;
+  }, {});
+
+  let roomsObject = rooms.reduce(function (acc, cur, i) {
+    acc[cur.id] = cur.number;
+
+    return acc;
+  }, {});
 
   const columns = [
-    { title: 'room_id', field: 'number', type: 'numeric' },
-    { title: 'arrival_date', field: 'arrival_date', type: 'date' },
-    { title: 'departure_date', field: ' departure_date', type: 'date' },
-    { title: 'cost', field: ' cost', type: 'currency' },
-    { title: 'staff_id', field: ' staff_id', type: 'numeric' },
-    { title: 'client_id', field: ' client_id', type: 'numeric' },
+    { title: 'Room', field: 'room_id', lookup: roomsObject },
+    { title: 'Arrival date', field: 'arrival_date', type: 'date' },
+    { title: 'Departure date', field: ' departure_date', type: 'date' },
+    { title: 'Cost', field: ' cost', type: 'currency' },
+    { title: 'Staff', field: ' staff_id', lookup: staffObject },
   ];
 
   const options = {
@@ -95,7 +109,7 @@ const Accommodation = (props) => {
               <Paper className={classes.paper}>
                 {isAccommodationFetched && (
                   <MaterialTable
-                    title="accommodation"
+                    title="Accommodation"
                     options={options}
                     columns={columns}
                     data={accommodation}
@@ -150,10 +164,12 @@ const Accommodation = (props) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     accommodation: getAccommodation(state),
     isAccommodationFetched: isAccommodationFetched(state),
+    staff: getStaff(state),
+    rooms: getRooms(state),
   };
 };
 

@@ -19,10 +19,6 @@ const Staff = (props) => {
     updateStaffAction
   } = props;
 
-  useEffect(() => {
-    fetchStaffAction();
-  }, []);
-
   const validateFields = (data) => {
     if (Object.keys(data).length === 0) {
       alert('Please add info');

@@ -12,10 +12,6 @@ const Rooms = (props) => {
 
   const {rooms, isRoomsFetched, fetchRoomsAction, addRoomAction, deleteRoomAction, updateRoomAction} = props;
 
-  useEffect(() => {
-    fetchRoomsAction();
-  }, []);
-
   const validateFields = (data) => {
     if (Object.keys(data).length === 0) {
       alert('Please add info');
