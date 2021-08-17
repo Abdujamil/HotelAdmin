@@ -7,7 +7,7 @@ import {getCategoryRooms, isCategoryRoomsFetched} from '../../selectors';
 import {fetchCategoryRooms, addCategoryRooms, deleteCategoryRooms, updateCategoryRooms} from '../../actions/categoryRooms';
 import useStyles from '../styles';
 
-const categoryRooms = (props) => {
+const CategoryRooms = (props) => {
   const classes = useStyles();
 
   const {categoryRooms, isCategoryRoomsFetched, fetchCategoryRoomsAction, addCategoryRoomsAction, deleteCategoryRoomsAction, updateCategoryRoomsAction} = props;
@@ -32,8 +32,8 @@ const categoryRooms = (props) => {
   }
 
   const columns = [
-    {title: 'Name', field: 'number', type: 'numeric'},
-    {title: 'Descripton', field: 'descripton', type: 'text'},
+    {title: 'Name', field: 'name', type: 'text'},
+    {title: 'Descripton', field: 'description', type: 'text'},
   ];
 
   const options = {
@@ -54,7 +54,7 @@ const categoryRooms = (props) => {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 {isCategoryRoomsFetched && <MaterialTable
-                  title="categoryRooms"
+                  title="Rooms category"
                   options={options}
                   columns={columns}
                   data={categoryRooms}
@@ -85,7 +85,7 @@ const categoryRooms = (props) => {
                       }),
                     onRowDelete: oldData =>
                       new Promise((resolve, reject) => {
-                        Promise.resolve(updateCategoryRoomsAction(oldData.id)).then(() => {
+                        Promise.resolve(deleteCategoryRoomsAction(oldData.id)).then(() => {
                           fetchCategoryRoomsAction();
                         }).then(() => {
                           resolve();
@@ -118,4 +118,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(categoryRooms);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryRooms);

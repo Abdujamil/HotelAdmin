@@ -11,6 +11,6 @@ export const rootReducer = combineReducers({
   user: userReducer,
   rooms: roomsReducer,
   staff: staffReducer,
-  accommodation: accommodationReducer
+  accommodation: accommodationReducer,
   categoryRooms: categoryRoomsReducer,
 });

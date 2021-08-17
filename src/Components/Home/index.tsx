@@ -9,6 +9,7 @@ import { getRooms } from '../../selectors';
 import { fetchRooms } from '../../actions/rooms';
 import { fetchStaff } from '../../actions/staff';
 import { fetchAccommodation } from '../../actions/accommodation';
+import { fetchCategoryRooms } from '../../actions/categoryRooms';
 import useStyles from '../styles';
 
 const Home = (props: any) => {
@@ -18,12 +19,14 @@ const Home = (props: any) => {
     fetchRoomsAction,
     fetchStaffAction,
     fetchAccommodationAction,
+    fetchCategoryRoomsAction
   } = props;
 
   useEffect(() => {
     fetchRoomsAction();
     fetchStaffAction();
     fetchAccommodationAction();
+    fetchCategoryRoomsAction();
   }, []);
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -68,6 +71,7 @@ const mapDispatchToProps = (dispatch: any) => {
     fetchRoomsAction: () => dispatch(fetchRooms()),
     fetchStaffAction: () => dispatch(fetchStaff()),
     fetchAccommodationAction: () => dispatch(fetchAccommodation()),
+    fetchCategoryRoomsAction: () => dispatch(fetchCategoryRooms()),
   };
 };
 
