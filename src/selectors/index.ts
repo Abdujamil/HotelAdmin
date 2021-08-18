@@ -22,3 +22,6 @@ export const isAccommodationFetched = (state: any) => state.accommodation.length
 
 export const getCategoryRooms = (state: any) => state.categoryRooms;
 export const isCategoryRoomsFetched = (state: any) => state.categoryRooms.length !== 0;
+
+export const getServices = (state: any) => state.services;
+export const isServicesFetched = (state: any) => state.services.length !== 0;

@@ -35,7 +35,7 @@ export const mainListItems = (
         <ListItemText primary="Staff" />
       </ListItem>
     </Link>
-    <Link to="./categoryRooms">
+    <Link to="./categoryRooms" color="inherit">
       <ListItem button>
         <ListItemIcon>
           <MeetingRoomOutlined />
@@ -51,11 +51,13 @@ export const mainListItems = (
         <ListItemText primary="Rooms" />
       </ListItem>
     </Link>
+    <Link to="./services">
     <ListItem button>
       <ListItemIcon>
         <RoomService />
       </ListItemIcon>
       <ListItemText primary="Services" />
     </ListItem>
+    </Link>
   </div>
 );
