@@ -7,7 +7,9 @@ import {
   VpnKey,
   Face,
   Dashboard,
+  LockOpen
 } from '@material-ui/icons';
+
 
 export const mainListItems = (
   <div>
@@ -22,7 +24,7 @@ export const mainListItems = (
     <Link to="./accommodation">
       <ListItem button>
         <ListItemIcon>
-          <VpnKey />
+          <LockOpen />
         </ListItemIcon>
         <ListItemText primary="Accommodation" />
       </ListItem>

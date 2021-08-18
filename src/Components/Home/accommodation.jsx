@@ -85,9 +85,9 @@ const Accommodation = (props) => {
   const columns = [
     { title: 'Room', field: 'room_id', lookup: roomsObject },
     { title: 'Arrival date', field: 'arrival_date', type: 'date' },
-    { title: 'Departure date', field: ' departure_date', type: 'date' },
-    { title: 'Cost', field: ' cost', type: 'currency' },
-    { title: 'Staff', field: ' staff_id', lookup: staffObject },
+    { title: 'Departure date', field: 'departure_date', type: 'date' },
+    { title: 'Cost', field: 'cost', type: 'currency' },
+    { title: 'Staff', field: 'staff_id', lookup: staffObject },
   ];
 
   const options = {

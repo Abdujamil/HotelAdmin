@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { CssBaseline, Container, Grid, Paper } from '@material-ui/core';
 import MenuBar from './menuBar';
 import Chart from './chart';
-import Orders from './orders';
-import { getRooms } from '../../selectors';
+import RecentAccommodation from './recentAccomodations';
+import { getRooms, isAccommodationFetched } from '../../selectors';
 import { fetchRooms } from '../../actions/rooms';
 import { fetchStaff } from '../../actions/staff';
 import { fetchAccommodation } from '../../actions/accommodation';
@@ -22,6 +22,7 @@ const Home = (props: any) => {
     fetchAccommodationAction,
     fetchCategoryRoomsAction,
     fetchServicesAction,
+    isAccommodationFetched,
   } = props;
 
   useEffect(() => {
@@ -50,12 +51,14 @@ const Home = (props: any) => {
             </Grid>
             {/* Recent Deposits */}
 
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
+            {/* Recent Accommodations */}
+            {isAccommodationFetched && (
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>
+                  <RecentAccommodation />
+                </Paper>
+              </Grid>
+            )}
           </Grid>
         </Container>
       </main>
@@ -66,6 +69,7 @@ const Home = (props: any) => {
 const mapStateToProps = (state: any) => {
   return {
     rooms: getRooms(state),
+    isAccommodationFetched: isAccommodationFetched(state),
   };
 };
 
