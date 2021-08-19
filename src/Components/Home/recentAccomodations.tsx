@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 import {
   Table,
@@ -8,13 +7,9 @@ import {
   TableHead,
   TableRow,
 } from '@material-ui/core';
-import { getAccommodation, getRooms } from '../../selectors';
-import Title from '@material-ui/core';
-
-
 
 const RecentAccommodation = (props: any) => {
-  const { accommodation, rooms } = props;
+  const { rooms, accommodation } = props;
 
   const roomsObject = rooms.reduce(function (acc: any, cur: any) {
     acc[cur.id] = cur.number;
@@ -36,8 +31,12 @@ const RecentAccommodation = (props: any) => {
         {accommodation.slice(0, 7).map((row: any) => (
           <TableRow key={row.room_id}>
             <TableCell>{roomsObject[row.room_id]}</TableCell>
-            <TableCell>{moment(row.arrival_date).format("YYYY-MM-DD")}</TableCell>
-            <TableCell>{moment(row.departure_date).format("YYYY-MM-DD")}</TableCell>
+            <TableCell>
+              {moment(row.arrival_date).format('DD-MM-YYYY')}
+            </TableCell>
+            <TableCell>
+              {moment(row.departure_date).format('DD-MM-YYYY')}
+            </TableCell>
             <TableCell>{row.cost}</TableCell>
           </TableRow>
         ))}
@@ -46,11 +45,4 @@ const RecentAccommodation = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    accommodation: getAccommodation(state),
-    rooms: getRooms(state),
-  };
-};
-
-export default connect(mapStateToProps, {})(RecentAccommodation);
+export default RecentAccommodation;

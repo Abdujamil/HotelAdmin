@@ -1,26 +1,32 @@
 import React from 'react';
+import moment from 'moment';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Label,
+  ResponsiveContainer,
+} from 'recharts';
 import { useTheme } from '@material-ui/core/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 
-// Generate Sales Data
-function createData(time:any, amount:any) {
-  return { time, amount };
-}
-
-const data = [
-  createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
-  createData('24:00', undefined),
-];
-
-export default function Chart() {
+const Chart = (props: any) => {
   const theme = useTheme();
+
+  const { accommodation } = props;
+
+  const today = moment();
+  const fiveDayAccomodation = accommodation.filter(row => today.diff(moment(row.arrival_date), 'days') < 4);
+
+  /*let data = [
+
+  ];*/
+
+  const data = accommodation.map((row: any) => {
+    return { date: moment(row.arrival_date).format('DD-MM-YYYY'), cost: row.cost };
+  });
+
+  console.log('fiveDayAccomodation', fiveDayAccomodation);
 
   return (
     <React.Fragment>
@@ -34,7 +40,7 @@ export default function Chart() {
             left: 24,
           }}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
+          <XAxis dataKey="date" stroke={theme.palette.text.secondary} />
           <YAxis stroke={theme.palette.text.secondary}>
             <Label
               angle={270}
@@ -44,9 +50,16 @@ export default function Chart() {
               Sales ($)
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
+          <Line
+            type="monotone"
+            dataKey="cost"
+            stroke={theme.palette.primary.main}
+            dot={false}
+          />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
   );
-}
+};
+
+export default Chart;

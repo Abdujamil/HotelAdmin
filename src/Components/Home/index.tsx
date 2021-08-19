@@ -5,7 +5,12 @@ import { CssBaseline, Container, Grid, Paper } from '@material-ui/core';
 import MenuBar from './menuBar';
 import Chart from './chart';
 import RecentAccommodation from './recentAccomodations';
-import { getRooms, isAccommodationFetched } from '../../selectors';
+import {
+  getRooms,
+  getAccommodation,
+  isAccommodationFetched,
+  isRoomsFetched,
+} from '../../selectors';
 import { fetchRooms } from '../../actions/rooms';
 import { fetchStaff } from '../../actions/staff';
 import { fetchAccommodation } from '../../actions/accommodation';
@@ -22,7 +27,10 @@ const Home = (props: any) => {
     fetchAccommodationAction,
     fetchCategoryRoomsAction,
     fetchServicesAction,
+    rooms,
+    accommodation,
     isAccommodationFetched,
+    isRoomsFetched,
   } = props;
 
   useEffect(() => {
@@ -43,19 +51,18 @@ const Home = (props: any) => {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-
             {/* Recent Accommodations */}
-            {isAccommodationFetched && (
+            {isAccommodationFetched && isRoomsFetched && (
               <Grid item xs={12}>
+                <Paper className={fixedHeightPaper}>
+                  <Chart accommodation={accommodation} />
+                </Paper>
+                <br />
                 <Paper className={classes.paper}>
-                  <RecentAccommodation />
+                  <RecentAccommodation
+                    rooms={rooms}
+                    accommodation={accommodation}
+                  />
                 </Paper>
               </Grid>
             )}
@@ -69,7 +76,9 @@ const Home = (props: any) => {
 const mapStateToProps = (state: any) => {
   return {
     rooms: getRooms(state),
+    accommodation: getAccommodation(state),
     isAccommodationFetched: isAccommodationFetched(state),
+    isRoomsFetched: isRoomsFetched(state),
   };
 };
 
