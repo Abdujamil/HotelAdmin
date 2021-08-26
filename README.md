@@ -1,7 +1,10 @@
 # hotel
 Creating React/Electron web app
-![Login](https://user-images.githubusercontent.com/66902835/130912828-31e44792-0858-4a84-896e-ac2201035736.jpg)
-![resetpassword](https://user-images.githubusercontent.com/66902835/130913282-faa5d74f-0517-40bb-aced-05342794d674.jpg)
-![dashboard](https://user-images.githubusercontent.com/66902835/130913041-d7e36442-434c-4033-b226-bcbb77f00e0d.jpg)
-![Accommodation](https://user-images.githubusercontent.com/66902835/130913062-24767587-0234-4974-b266-ebd4ef69b690.jpg)
-![calendar](https://user-images.githubusercontent.com/66902835/130913091-20191720-3260-4870-8037-05713b67b3ae.jpg)
+1.Login -- ![image](https://user-images.githubusercontent.com/66902835/130913996-d55bd255-16ff-4bbb-b31c-e48ad9973c5a.png)
+2.Reset_Password -- ![image](https://user-images.githubusercontent.com/66902835/130914137-27b4fd46-14c8-4237-b8a7-3599837ba689.png)
+3.Dashboard -- ![image](https://user-images.githubusercontent.com/66902835/130915457-ece8233c-081b-49ec-8101-7068facefcab.png)
+4.Accomodation_Add -- ![image](https://user-images.githubusercontent.com/66902835/130914564-d77615b9-02a1-4b59-94f9-93328e09e670.png)
+5.Accomodation_Delete -- ![image](https://user-images.githubusercontent.com/66902835/130914722-6ecf1830-9043-4d9e-b129-131524f02ce5.png)
+6.Accomodation_Update -- ![image](https://user-images.githubusercontent.com/66902835/130914837-a5a3771a-0480-46cf-a352-435e3d767024.png)
+7.Choose_Date -- ![image](https://user-images.githubusercontent.com/66902835/130914772-71d38760-55a1-48fc-8b9b-eb453ea8e501.png)
+
