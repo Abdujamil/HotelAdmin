@@ -18,7 +18,9 @@ const RecentAccommodation = (props: any) => {
   }, {});
 
   return (
-    <Table size="small">
+    <>
+      <h1>Latest accommodation</h1>
+      <Table size="small">
       <TableHead>
         <TableRow>
           <TableCell>Room</TableCell>
@@ -42,6 +44,7 @@ const RecentAccommodation = (props: any) => {
         ))}
       </TableBody>
     </Table>
+    </>
   );
 };
 

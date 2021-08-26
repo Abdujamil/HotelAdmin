@@ -58,6 +58,7 @@ const Chart = (props: any) => {
 
   return (
     <React.Fragment>
+      <h1>Latest transactions</h1>
       <ResponsiveContainer>
         <LineChart
           data={data}
