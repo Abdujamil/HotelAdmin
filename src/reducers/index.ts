@@ -7,6 +7,7 @@ import accommodationReducer from './accomodation';
 import categoryRoomsReducer from './categoryRooms';
 import servicesReducer from './services';
 
+//Combine all reducers in one
 export const rootReducer = combineReducers({
   app: appReducer,
   user: userReducer,

@@ -15,15 +15,16 @@ import Accommodation from './Components/Home/accommodation';
 import categoryRooms from './Components/Home/categoryRooms';
 import services from './Components/Home/services';
 
-
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
+      {/* Connect app to redux store */}
       <HashRouter>
         <div className="App">
           <Loader />
           <AlertSuccess />
           <ErrorModal />
+          {/* Router links */}
           <Switch>
             <Route path="/" exact component={Login} />
             <Route path="/register" component={Register} />
@@ -39,6 +40,6 @@ function App() {
       </HashRouter>
     </Provider>
   );
-}
+};
 
 export default App;

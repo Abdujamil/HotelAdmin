@@ -1,3 +1,1 @@
 export const SET_ACCOMODATION = 'SET_ACCOMODATION';
-
-

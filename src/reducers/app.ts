@@ -1,5 +1,6 @@
 import * as types from '../actionTypes/app';
 
+//State on first loading app
 const initialState: {
   loadersCount: number;
   error: boolean;

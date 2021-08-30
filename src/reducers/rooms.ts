@@ -3,12 +3,11 @@ import * as types from '../actionTypes/rooms';
 const roomsReducer = (state = [], action: any) => {
   switch (action.type) {
     case types.SET_ROOMS:
-      return [...action.payload];
+      return [...action.payload]; //Add all rooms to redux store
 
     default:
-      return state
+      return state;
   }
 };
 
 export default roomsReducer;
-
